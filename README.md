@@ -1,6 +1,6 @@
 # a9n-abi
 
-Common, architecture-independent type definitions for the A9N Microkernel ecosystem, including capabilities, message formats, errors, and shared kernel/user data structures.
+ABI definitions for the A9N Microkernel, including kernel call numbers, capability operation types, message register layouts, and low-level calling conventions.
 
 ## LICENSE
 
