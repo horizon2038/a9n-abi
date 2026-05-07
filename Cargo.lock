@@ -4,13 +4,13 @@ version = 4
 
 [[package]]
 name = "a9n-types"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c9998f6b7b341c36aec7c10a0f44c9010d0cb2fc18872a883089c2f386e335a0"
+checksum = "8a5517a739252cdcce19123d4199d9c97facbbc9a7d44eb9190cbbbafa9ca8a3"
 
 [[package]]
 name = "a9n_abi"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "a9n-types",
 ]
