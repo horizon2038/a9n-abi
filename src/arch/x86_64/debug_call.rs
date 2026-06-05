@@ -9,8 +9,7 @@ pub fn write_char(c: char) {
         in("rdi") c as u16, // debug_write_char (ascii)
         out("rcx") _,
         out("r11") _,
-        clobber_abi("system"),
-        // options(preserves_flags),
+        options(nostack),
         );
     }
 }
