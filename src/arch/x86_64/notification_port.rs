@@ -18,7 +18,6 @@ pub fn notify(descriptor: CapabilityDescriptor) -> CapabilityResult {
         out("rcx") _,
         out("r11") _,
         options(nostack),
-        options(nomem),
         );
     }
 
@@ -41,7 +40,6 @@ pub fn wait(descriptor: CapabilityDescriptor) -> Result<Word, CapabilityError> {
         out("rcx") _,
         out("r11") _,
         options(nostack),
-        options(nomem),
         );
     }
 
@@ -67,7 +65,6 @@ pub fn poll(descriptor: CapabilityDescriptor) -> Result<Word, CapabilityError> {
         out("rcx") _,
         out("r11") _,
         options(nostack),
-        options(nomem),
         );
     }
 
