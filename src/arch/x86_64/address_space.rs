@@ -1,6 +1,7 @@
 use core::arch::asm;
 
 use crate::capability_call::address_space;
+use crate::capability_call::address_space::Attribute;
 use crate::*;
 
 #[inline(always)]
@@ -8,14 +9,13 @@ pub fn map(
     descriptor: CapabilityDescriptor,
     map_descriptor: CapabilityDescriptor,
     virtual_address: VirtualAddress,
-    _attribute: Word,
+    attribute: Attribute,
 ) -> CapabilityResult {
     let mut a0 = descriptor;
     let mut a1 = address_space::OperationType::Map as Word;
     let mut a2 = map_descriptor as Word;
     let mut a3 = virtual_address as Word;
-    let mut a4 = _attribute; // currently unused, but we can use it to specify cacheability,
-                             // access rights, etc.
+    let mut a4 = attribute.bits() as Word;
 
     unsafe {
         asm!(
