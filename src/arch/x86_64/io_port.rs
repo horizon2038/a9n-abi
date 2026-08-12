@@ -64,3 +64,37 @@ pub fn write(
 
     convert_capability_result(a0, a1)
 }
+
+#[inline(always)]
+pub fn mint(
+    target: CapabilityDescriptor,
+    range_min: Word,
+    range_max: Word,
+    destination_node: CapabilityDescriptor,
+    destination_index: Word,
+) -> Result<(), CapabilityError> {
+    let mut a0 = target;
+    let mut a1 = io_port::OperationType::Mint as Word;
+    let a2 = range_min;
+    let a3 = range_max;
+    let a4 = destination_node as Word;
+    let a5 = destination_index;
+
+    unsafe {
+        asm!(
+            "syscall",
+            in("rax") KernelCallType::CapabilityCall as Sword,
+            inout("rdi") a0 => a0,
+            inout("rsi") a1 => a1,
+            in("rdx") a2,
+            in("r8") a3,
+            in("r9") a4,
+            in("r10") a5,
+            out("rcx") _,
+            out("r11") _,
+            options(nostack),
+        );
+    }
+
+    convert_capability_result(a0, a1)
+}
